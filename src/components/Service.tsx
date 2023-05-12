@@ -6,8 +6,8 @@ import Link from "next/link";
 const serviceContents = [
   { label: "Rias Pengantin", imageUrl: "/assets/images/bride-2.png" },
   { label: "Catering", imageUrl: "/assets/images/catering.png" },
-  { label: "Tenda", imageUrl: "/assets/images/tent.png" },
-  { label: "Pelaminan", imageUrl: "/assets/images/aisle.png" },
+  { label: "Tenda", imageUrl: "/assets/images/tent-2.png" },
+  { label: "Pelaminan", imageUrl: "/assets/images/tent-3.png" },
 ];
 
 const Service = () => {
