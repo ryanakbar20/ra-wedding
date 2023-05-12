@@ -7,7 +7,7 @@ const Hero = () => {
     <div className="pt-16 md:pt-20" id="home">
       <div className="w-full h-96 bg-gray-100 relative">
         <Image
-          src="/assets/images/hero.png"
+          src="/assets/images/tent-1.png"
           alt="hero-image"
           layout="fill"
           objectFit="cover"
