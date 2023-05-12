@@ -16,7 +16,7 @@ const Header = () => {
           &nbsp;
         </div>
         <div className="md:container mx-auto flex justify-between items-center py-2 px-4 md:px-0 bg-white">
-          <Logo size="lg" />
+          <Logo />
           <div className="md:hidden">
             <Image
               style={{ color: "white" }}
