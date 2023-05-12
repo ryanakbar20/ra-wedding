@@ -1,8 +1,7 @@
 "use client";
 
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useEffect, useCallback } from "react";
 import useEmblaCarousel, { EmblaOptionsType } from "embla-carousel-react";
-import { PrevButton, NextButton } from "./EmblaCarouselArrowsDotsButtons";
 import imageByIndex, { textByIndex } from "./imageByIndex";
 import Image from "next/legacy/image";
 import ButtonWhatsapp from "./ButtonWhatsapp";
@@ -19,22 +18,9 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
   const [emblaRef, emblaApi] = useEmblaCarousel(options, [
     Autoplay({ delay: 4000 }),
   ]);
-  const [prevBtnEnabled, setPrevBtnEnabled] = useState(false);
-  const [nextBtnEnabled, setNextBtnEnabled] = useState(false);
-
-  const scrollPrev = useCallback(
-    () => emblaApi && emblaApi.scrollPrev(),
-    [emblaApi]
-  );
-  const scrollNext = useCallback(
-    () => emblaApi && emblaApi.scrollNext(),
-    [emblaApi]
-  );
 
   const onSelect = useCallback(() => {
     if (!emblaApi) return;
-    setPrevBtnEnabled(emblaApi.canScrollPrev());
-    setNextBtnEnabled(emblaApi.canScrollNext());
   }, [emblaApi]);
 
   useEffect(() => {
@@ -74,8 +60,6 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
                     <ButtonWhatsapp />
                   </div>
                 </div>
-                <PrevButton onClick={scrollPrev} enabled={prevBtnEnabled} />
-                <NextButton onClick={scrollNext} enabled={nextBtnEnabled} />
               </div>
             ))}
           </div>
