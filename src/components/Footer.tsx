@@ -6,10 +6,10 @@ import Animation from "./Animation";
 
 const Footer = () => {
   return (
-    <footer className="bg-yellow-100">
+    <footer className="bg-emerald-500 text-white">
       <div className="md:container mx-auto flex justify-between space-x-8 px-4 md:px-0 py-8 ">
         <Animation>
-          <Logo className="h-20 w-20" />
+          <Logo className="h-20 w-20" color="white" />
         </Animation>
 
         <Animation>
@@ -22,7 +22,7 @@ const Footer = () => {
             <Link
               href={`https://www.google.com/maps/search/?api=1&query=-6.315990,107.006781`}
             >
-              <p className="text-xs md:text-base text-gray-600 max-w-sm cursor-pointer">
+              <p className="text-xs md:text-base max-w-sm cursor-pointer">
                 Jl. Perempatan Telkom No. 120 RT 003/006 Kel. Padurenan Kec.
                 Mustika Jaya, Kota Bekasi
               </p>

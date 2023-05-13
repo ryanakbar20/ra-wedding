@@ -98,6 +98,9 @@ const Header = () => {
                   {item.label}
                 </li>
               ))}
+              <li className="px-4 py-2">
+                <ButtonWhatsapp />
+              </li>
             </ul>
           </AnimationMobileNav>
         </div>

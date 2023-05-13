@@ -30,9 +30,12 @@ const Service = () => {
                 />
                 <div
                   className="absolute left-0 bottom-0 p-2"
-                  style={{ background: "rgba(255, 251, 213, 0.8)" }}
+                  style={{ background: "rgba(16, 185, 129, 0.8)" }}
                 >
-                  <p className="text-sm md:text-base" style={poppins400.style}>
+                  <p
+                    className="text-white text-sm md:text-base"
+                    style={poppins400.style}
+                  >
                     {item.label}
                   </p>
                 </div>

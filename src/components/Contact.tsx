@@ -7,7 +7,7 @@ const Contact = ({ children }: { children: string }) => (
       <Image
         className="text-white"
         style={{ color: "white" }}
-        src="/assets/icons/whatsapp-primary.svg"
+        src="/assets/icons/whatsapp.svg"
         alt="whatsapp-icon"
         width={24}
         height={24}
