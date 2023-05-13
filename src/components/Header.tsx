@@ -5,7 +5,7 @@ import Image from "next/legacy/image";
 import Logo from "./Logo";
 import ButtonWhatsapp from "./ButtonWhatsapp";
 import { poppins400 } from "@/fonts";
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 
 const Header = () => {
   const [isShow, setIsShow] = useState(false);
@@ -31,6 +31,24 @@ const Header = () => {
       id: "#service",
     },
   ];
+
+  const animation: Variants = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: {
+        delayChildren: 0.5,
+      },
+    },
+  };
+
+  const AnimationMobileNav = ({ children }: { children: React.ReactNode }) => {
+    return (
+      <motion.div initial="hidden" animate="show">
+        <motion.div variants={animation}>{children}</motion.div>
+      </motion.div>
+    );
+  };
 
   return (
     <>
@@ -63,27 +81,27 @@ const Header = () => {
           </div>
         </div>
       </header>
-      <motion.div
-        className="fixed top-10 left-0 right-0 bottom-0 mt-8"
-        style={{ background: "rgba(0,0,0,0.5)", zIndex: 9999 }}
-        animate={{
-          display: isShow ? "inherit" : "none",
-          opacity: isShow ? 1 : 0,
-        }}
-        onClick={() => setIsShow(false)}
-      >
-        <motion.ul className="flex flex-col space-y-4 bg-white pb-6">
-          {navMenu?.map((item, index) => (
-            <motion.li
-              key={index}
-              className="cursor-pointer px-4 py-2 hover:bg-gray-100"
-              onClick={() => handleClick(item.id)}
-            >
-              {item.label}
-            </motion.li>
-          ))}
-        </motion.ul>
-      </motion.div>
+      {isShow && (
+        <div
+          className="fixed top-10 left-0 right-0 bottom-0 mt-8"
+          style={{ background: "rgba(0,0,0,0.5)", zIndex: 9999 }}
+          onClick={() => setIsShow(false)}
+        >
+          <AnimationMobileNav>
+            <ul className="flex flex-col space-y-4 bg-white pb-6">
+              {navMenu?.map((item, index) => (
+                <li
+                  key={index}
+                  className="cursor-pointer px-4 py-2 hover:bg-gray-100"
+                  onClick={() => handleClick(item.id)}
+                >
+                  {item.label}
+                </li>
+              ))}
+            </ul>
+          </AnimationMobileNav>
+        </div>
+      )}
     </>
   );
 };
