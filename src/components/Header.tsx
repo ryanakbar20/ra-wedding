@@ -9,6 +9,13 @@ import { poppins400 } from "@/fonts";
 const Header = () => {
   const [isShow, setIsShow] = useState(false);
 
+  const handleClick = (id: string) => {
+    const anchor = document.createElement("a");
+    anchor.href = id;
+    anchor.click();
+    anchor.remove();
+  };
+
   return (
     <>
       <header className="shadow fixed w-full  z-10" style={poppins400.style}>
@@ -51,14 +58,23 @@ const Header = () => {
           onClick={() => setIsShow(false)}
         >
           <ul className="flex flex-col space-y-4 bg-white pb-6">
-            <li className="cursor-pointer px-4 py-2 hover:bg-gray-100">
-              <a href="#home">Beranda</a>
+            <li
+              className="cursor-pointer px-4 py-2 hover:bg-gray-100"
+              onClick={() => handleClick("#home")}
+            >
+              Beranda
             </li>
-            <li className="cursor-pointer px-4 py-2 hover:bg-gray-100">
-              <a href="#about">Tentang Kami</a>
+            <li
+              className="cursor-pointer px-4 py-2 hover:bg-gray-100"
+              onClick={() => handleClick("#about")}
+            >
+              Tentang Kami
             </li>
-            <li className="cursor-pointer px-4 py-2 hover:bg-gray-100">
-              <a href="#service">Layanan</a>
+            <li
+              className="cursor-pointer px-4 py-2 hover:bg-gray-100"
+              onClick={() => handleClick("#service")}
+            >
+              Layanan
             </li>
           </ul>
         </div>
