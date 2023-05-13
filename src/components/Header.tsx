@@ -5,6 +5,7 @@ import Image from "next/legacy/image";
 import Logo from "./Logo";
 import ButtonWhatsapp from "./ButtonWhatsapp";
 import { poppins400 } from "@/fonts";
+import { motion } from "framer-motion";
 
 const Header = () => {
   const [isShow, setIsShow] = useState(false);
@@ -15,6 +16,21 @@ const Header = () => {
     anchor.click();
     anchor.remove();
   };
+
+  const navMenu: { label: string; id: string }[] = [
+    {
+      label: "Beranda",
+      id: "#home",
+    },
+    {
+      label: "Tentang Kami",
+      id: "#about",
+    },
+    {
+      label: "Layanan",
+      id: "#service",
+    },
+  ];
 
   return (
     <>
@@ -37,48 +53,37 @@ const Header = () => {
 
           <div className="hidden md:flex space-x-8 items-center">
             <ul className="flex space-x-4">
-              <li className="cursor-pointer">
-                <a href="#home">Beranda</a>
-              </li>
-              <li className="cursor-pointer">
-                <a href="#about">Tentang Kami</a>
-              </li>
-              <li className="cursor-pointer">
-                <a href="#service">Layanan</a>
-              </li>
+              {navMenu?.map((item, index) => (
+                <li key={index} className="cursor-pointer">
+                  <a href={item.id}>{item.label}</a>
+                </li>
+              ))}
             </ul>
             <ButtonWhatsapp />
           </div>
         </div>
       </header>
-      {isShow && (
-        <div
-          className="fixed top-10 left-0 right-0 bottom-0 z-10 mt-8"
-          style={{ background: "rgba(0,0,0,0.5)" }}
-          onClick={() => setIsShow(false)}
-        >
-          <ul className="flex flex-col space-y-4 bg-white pb-6">
-            <li
+      <motion.div
+        className="fixed top-10 left-0 right-0 bottom-0 mt-8"
+        style={{ background: "rgba(0,0,0,0.5)", zIndex: 9999 }}
+        animate={{
+          display: isShow ? "inherit" : "none",
+          opacity: isShow ? 1 : 0,
+        }}
+        onClick={() => setIsShow(false)}
+      >
+        <motion.ul className="flex flex-col space-y-4 bg-white pb-6">
+          {navMenu?.map((item, index) => (
+            <motion.li
+              key={index}
               className="cursor-pointer px-4 py-2 hover:bg-gray-100"
-              onClick={() => handleClick("#home")}
+              onClick={() => handleClick(item.id)}
             >
-              Beranda
-            </li>
-            <li
-              className="cursor-pointer px-4 py-2 hover:bg-gray-100"
-              onClick={() => handleClick("#about")}
-            >
-              Tentang Kami
-            </li>
-            <li
-              className="cursor-pointer px-4 py-2 hover:bg-gray-100"
-              onClick={() => handleClick("#service")}
-            >
-              Layanan
-            </li>
-          </ul>
-        </div>
-      )}
+              {item.label}
+            </motion.li>
+          ))}
+        </motion.ul>
+      </motion.div>
     </>
   );
 };

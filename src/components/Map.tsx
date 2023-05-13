@@ -5,6 +5,8 @@ import L from "leaflet";
 import { MapContainer, TileLayer, Marker } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import Link from "next/link";
+import Animation from "./Animation";
+import Title from "./Title";
 
 let DefaultIcon = new L.icon({
   iconUrl: "/assets/icons/marker.svg",
@@ -21,24 +23,32 @@ const Map = () => {
   const ZOOM_LEVEL = 20;
   const mapRef = useRef();
   return (
-    <div className="w-full h-80 bg-gray-100">
-      <Link
-        href={`https://www.google.com/maps/search/?api=1&query=${center.lat},${center.lng}`}
-      >
-        <MapContainer
-          style={{ height: "100%", width: "100%" }}
-          center={center}
-          zoom={ZOOM_LEVEL}
-          ref={mapRef}
-        >
-          <TileLayer
-            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-          />
+    <div className="flex flex-col space-y-12 text-center">
+      <Animation>
+        <Title>Alamat Kami</Title>
+      </Animation>
 
-          <Marker position={[center.lat, center.lng]} icon={DefaultIcon} />
-        </MapContainer>
-      </Link>
+      <Animation>
+        <div className="w-full h-80 bg-gray-100">
+          <Link
+            href={`https://www.google.com/maps/search/?api=1&query=${center.lat},${center.lng}`}
+          >
+            <MapContainer
+              style={{ height: "100%", width: "100%", position: "relative" }}
+              center={center}
+              zoom={ZOOM_LEVEL}
+              ref={mapRef}
+            >
+              <TileLayer
+                attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+              />
+
+              <Marker position={[center.lat, center.lng]} icon={DefaultIcon} />
+            </MapContainer>
+          </Link>
+        </div>
+      </Animation>
     </div>
   );
 };

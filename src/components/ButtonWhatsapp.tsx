@@ -16,7 +16,7 @@ const ButtonWhatsapp = () => {
           width={24}
           height={24}
         />
-        <p className="text-sm md:text-base">Kontak Kami</p>
+        <p className="text-sm md:text-base">Hubungi Kami</p>
       </button>
     </Link>
   );
