@@ -2,7 +2,11 @@ import Image from "next/legacy/image";
 import Link from "next/link";
 
 const Contact = ({ children }: { children: string }) => (
-  <Link href="https://api.whatsapp.com/send?phone=6285883267106&text=Halo Admin, mau nanya nih tentang layanan di RA Wedding..">
+  <Link
+    href="https://api.whatsapp.com/send?phone=6285883267106&text=Halo Admin, mau nanya nih tentang layanan di RA Wedding.."
+    rel="noopener noreferrer"
+    target="_blank"
+  >
     <div className="flex space-x-2 cursor-pointer">
       <Image
         className="text-white"

@@ -20,6 +20,8 @@ const Service = () => {
           <Animation key={index}>
             <Link
               href={`https://api.whatsapp.com/send?phone=6285883267106&text=Halo Admin, mau nanya nih tentang layanan ${item.label} di RA Wedding..`}
+              rel="noopener noreferrer"
+              target="_blank"
             >
               <div className="relative h-52 cursor-pointer">
                 <Image
