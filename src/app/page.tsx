@@ -1,3 +1,4 @@
+import { Analytics } from "@vercel/analytics/react";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import About from "@/components/About";
@@ -11,17 +12,20 @@ const Map = dynamic(() => import("@/components/Map"), {
 
 export default function Home() {
   return (
-    <main className="relative">
-      <Header />
-      <div>
-        <Hero />
-        <div className="md:container mx-auto flex flex-col space-y-12 px-4 md:px-0 py-12">
-          <About />
-          <Service />
-          <Map />
+    <>
+      <main className="relative">
+        <Header />
+        <div>
+          <Hero />
+          <div className="md:container mx-auto flex flex-col space-y-12 px-4 md:px-0 py-12">
+            <About />
+            <Service />
+            <Map />
+          </div>
         </div>
-      </div>
-      <Footer />
-    </main>
+        <Footer />
+      </main>
+      <Analytics />
+    </>
   );
 }
